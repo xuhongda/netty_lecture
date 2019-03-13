@@ -18,7 +18,7 @@ public class TestHttpServerHandler extends SimpleChannelInboundHandler<HttpObjec
         System.out.println(msg.getClass());
 
         System.out.println(ctx.channel().remoteAddress());
-        Thread.sleep(8000);
+        //Thread.sleep(8000);
 
         if (msg instanceof HttpRequest) {
             HttpRequest httpRequest = (HttpRequest)msg;
@@ -26,7 +26,8 @@ public class TestHttpServerHandler extends SimpleChannelInboundHandler<HttpObjec
             System.out.println("请求方法名：" + httpRequest.method().name());
 
             URI uri = new URI(httpRequest.uri());
-            if("/favicon.ico".equals(uri.getPath())) {
+            String favicon = "/favicon.ico";
+            if(favicon.equals(uri.getPath())) {
                 System.out.println("请求favicon.ico");
                 return;
             }
@@ -41,6 +42,7 @@ public class TestHttpServerHandler extends SimpleChannelInboundHandler<HttpObjec
             ctx.channel().close();
         }
     }
+
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {

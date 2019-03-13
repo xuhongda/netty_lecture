@@ -10,6 +10,9 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 public class TestServer {
 
     public static void main(String[] args) throws Exception {
+        /**
+         * bossGroup 将连接发给 workerGroup
+         */
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
 
